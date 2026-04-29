@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <math.h>
+
+/* Structure Point */
+typedef struct {
+    int x;
+    int y;
+} Point;
+
+float distance(Point p) {
+    return sqrt(p.x*p.x + p.y*p.y);
+}
+
+void afficher(Point p) {
+    printf("(%d,%d)\n", p.x, p.y);
+}
+
+/* Structure Heure */
+typedef struct {
+    int h, m, s;
+} Heure;
+
+int toSeconds(Heure t) {
+    return t.h*3600 + t.m*60 + t.s;
+}
+
+Heure toHeure(int sec) {
+    Heure t;
+    t.h = sec/3600;
+    sec %= 3600;
+    t.m = sec/60;
+    t.s = sec%60;
+    return t;
+}
+
+/* Test */
+int main() {
+    Point p = {3,4};
+    afficher(p);
+    printf("Distance = %.2f\n", distance(p));
+
+    Heure t = {1,30,0};
+    printf("Seconds = %d\n", toSeconds(t));
+
+    return 0;
+}
+ 
